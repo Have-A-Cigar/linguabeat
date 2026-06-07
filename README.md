@@ -1,8 +1,8 @@
-# LinguaBeat 🎵
+# LinguaBeat
 
-**Веб-платформа изучения русского языка как иностранного (РКИ) через музыку и алгоритм интервального повторения FSRS-5.**
+Веб-платформа для изучения русского языка как иностранного (РКИ) через лицензированную музыку и алгоритм интервального повторения FSRS-5.
 
-Первый рынок: иностранные студенты российских вузов (РУДН, СПбГУ и др.).  
+Первый рынок: иностранные студенты российских вузов (РУДН, СПбГУ и др.).
 Бизнес-модель: freemium, 250 руб./мес. за полный доступ.
 
 ---
@@ -28,7 +28,7 @@ npm run dev
 # → http://localhost:5173
 ```
 
-### Docker Compose (всё сразу)
+### Docker Compose
 ```bash
 cp .env.example .env
 docker compose up --build
@@ -81,13 +81,6 @@ linguabeat/
 ## Технологии
 
 - **Backend**: FastAPI, SQLAlchemy 2.0 (async), PostgreSQL 15, Redis, JWT
-- **Frontend**: React 18, TypeScript, Vite, TailwindCSS, Axios
+- **Frontend**: React 18, TypeScript, Vite, TailwindCSS
 - **SRS-ядро**: FSRS-5 (−25% повторений при том же 90% retention), реализован в `backend/app/domain/core_srs.py`
 - **Деплой**: Docker Compose, Nginx (reverse proxy + TLS)
-
----
-
-## Конкурс
-
-Проект создан для конкурса **«Студенческий стартап»** (Фонд содействия инновациям, очередь 7).  
-Грант: 1 000 000 руб. на 12 месяцев.

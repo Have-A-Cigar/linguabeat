@@ -49,7 +49,7 @@ generate_v12.py
 Проведенная работа над проектом до реструктуризации данных/
 About_konkurs/
 
-# AI agent / IDE settings (not part of app)
+# IDE / development settings (not part of app)
 .claude/
 .mcp.json
 CLAUDE.md

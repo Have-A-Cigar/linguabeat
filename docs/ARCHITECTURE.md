@@ -1,12 +1,12 @@
-# Архитектура веб-платформы LinguaBeat
+﻿# Архитектура веб-платформы LinguaBeat
 
 > Полная архитектурная документация веб-платформы для изучения русского языка как
-> иностранного (РКИ) через музыку и алгоритм интервального повторения SM-2.
+> иностранного (РКИ) через музыку и алгоритм интервального повторения FSRS-5.
 >
 > **Версия документа:** 1.0
 > **Дата:** 2026-06-06
 > **Статус:** MVP-архитектура
-> **Ядро SRS:** [`src/core_srs.py`](../src/core_srs.py)
+> **Ядро SRS:** [`backend/app/domain/core_srs.py`](../backend/app/domain/core_srs.py)
 
 ---
 
@@ -17,7 +17,7 @@
 **LinguaBeat** — веб-платформа, обучающая русскому языку через прослушивание
 лицензированных музыкальных треков с субтитрами в реальном времени. Ключевая
 инновация: слово запоминается вместе со своим **музыкальным контекстом** —
-треком, строфой и таймкодом, где оно встретилось. Повторение по алгоритму **SM-2**
+треком, строфой и таймкодом, где оно встретилось. Повторение по алгоритму **FSRS-5**
 происходит в том же фонетическом и эмоциональном контексте, что и первое знакомство.
 
 **Первый рынок:** иностранные студенты российских вузов (РУДН, СПбГУ и др.).
@@ -41,7 +41,7 @@ graph TD
 
     subgraph App["Прикладной слой"]
         API["FastAPI Backend<br/>Python 3.11"]
-        SRS["SM-2 Engine<br/>core_srs.py"]
+        SRS["FSRS-5 Engine<br/>core_srs.py"]
         AI["AI-модуль (М10–12)<br/>LLM-обогащение"]
     end
 
@@ -144,14 +144,14 @@ linguabeat/
 │   │   │   ├── srs_service.py     # Обёртка над core_srs.py
 │   │   │   ├── track_service.py
 │   │   │   ├── word_service.py
-│   │   │   └── ai_service.py      # LLM-обогащение (М10–12)
+│   │   │   └── translation_service.py # Перевод + обогащение слов
 │   │   ├── core/                  # Инфраструктура
 │   │   │   ├── config.py          # Настройки (env)
 │   │   │   ├── security.py        # JWT, хэширование паролей
 │   │   │   ├── database.py        # Async-движок SQLAlchemy
 │   │   │   └── redis.py           # Подключение к Redis
 │   │   ├── domain/
-│   │   │   └── core_srs.py        # Ядро SM-2 (stdlib-only, без зависимостей)
+│   │   │   └── core_srs.py        # Ядро FSRS-5 (fsrs>=4.0.0)
 │   │   └── main.py                # Точка входа FastAPI
 │   ├── alembic/                   # Миграции БД
 │   ├── tests/
@@ -179,7 +179,7 @@ linguabeat/
 graph LR
     Student(("Студент"))
     Teacher(("Преподаватель<br/>(будущий)"))
-    System(("Система<br/>SM-2 / AI"))
+    System(("Система<br/>FSRS-5"))
 
     subgraph LinguaBeat
         UC1["Прослушать трек"]
@@ -188,7 +188,7 @@ graph LR
         UC4["Просмотреть прогресс"]
         UC5["Пассивный режим<br/>(прослушивание без учёбы)"]
         UC6["Управлять личным<br/>словарём"]
-        UC7["Запланировать повторения<br/>(SM-2)"]
+        UC7["Запланировать повторения<br/>(FSRS-5)"]
         UC8["Сгенерировать контекстный<br/>пример (LLM)"]
         UC9["Назначить плейлист<br/>группе (M+)"]
         UC10["Смотреть прогресс<br/>студентов (M+)"]
@@ -225,7 +225,7 @@ sequenceDiagram
     participant FE as React SPA
     participant API as FastAPI
     participant SVC as WordService
-    participant SRS as SM-2 Engine<br/>(core_srs.py)
+    participant SRS as FSRS-5 Engine<br/>(core_srs.py)
     participant DB as PostgreSQL
 
     U->>FE: Открывает трек, нажимает Play
@@ -239,7 +239,7 @@ sequenceDiagram
     FE->>API: POST /words {word, track_id,<br/>subtitle_text, timecode_sec}
     API->>SVC: add_word(...)
     SVC->>SRS: WordEntry(word, WordContext)
-    Note over SRS: Инициализация SM-2:<br/>ef=2.5, interval=1, reps=0,<br/>due_date=today
+    Note over SRS: Инициализация FSRS-5:<br/>state=Learning, step=0,<br/>stability=None, difficulty=None,<br/>due=now
     SRS-->>SVC: WordEntry (initial state)
     SVC->>DB: INSERT INTO user_words
     DB-->>SVC: ok
@@ -256,7 +256,7 @@ sequenceDiagram
     participant FE as React SPA
     participant API as FastAPI
     participant SVC as SRSService
-    participant SRS as SM-2 Engine<br/>(core_srs.py)
+    participant SRS as FSRS-5 Engine<br/>(core_srs.py)
     participant DB as PostgreSQL
 
     U->>FE: Открывает «Повторение»
@@ -275,8 +275,8 @@ sequenceDiagram
         FE->>API: POST /srs/review {user_word_id, quality}
         API->>SVC: apply_review(result)
         SVC->>SRS: schedule(entry, quality)
-        Note over SRS: EF' = EF + (0.1 − (5−q)·(0.08+(5−q)·0.02))<br/>EF' = max(1.3, EF')<br/>I(n) = round(I(n−1) × EF')<br/>если q < 3 → сброс, слово<br/>возвращается в сессию немедленно
-        SRS-->>SVC: WordEntry (new ef, interval, due_date)
+        Note over SRS: FSRS-5: quality→Rating<br/>(0-2=Again, 3=Hard, 4=Good, 5=Easy)<br/>Scheduler.review_card() →<br/>stability, difficulty, due
+        SRS-->>SVC: WordEntry (new stability, difficulty, due)
         SVC->>DB: UPDATE user_words<br/>INSERT INTO srs_reviews
         DB-->>SVC: ok
         SVC-->>API: обновлённая карточка
@@ -308,7 +308,7 @@ graph TD
         SrsSvc["services/srs_service"]
         TrackSvc["services/track_service"]
         AiSvc["services/ai_service"]
-        Domain["domain/core_srs.py<br/>(SM-2, чистое ядро)"]
+        Domain["domain/core_srs.py<br/>(FSRS-5, чистое ядро)"]
         Repo["models/ (SQLAlchemy 2.0)"]
 
         Router --> AuthC
@@ -428,7 +428,7 @@ erDiagram
 | | DELETE | `/words/{id}` | Удалить слово из словаря |
 | | POST | `/words/{id}/enrich` | LLM-пример для слова (М10–12) |
 | **srs** | GET | `/srs/due` | Слова к повторению на сегодня (context-карточки) |
-| | POST | `/srs/review` | Применить оценку (q 0–5), пересчёт SM-2 |
+| | POST | `/srs/review` | Применить оценку (q 0–5), пересчёт FSRS-5 |
 | | GET | `/srs/stats` | Сводка по очереди повторений |
 | **progress** | GET | `/progress` | Прогресс: выучено / в процессе / новых |
 | | GET | `/progress/streak` | Серия дней, активность |
@@ -510,20 +510,24 @@ graph TD
 
 ---
 
-## Приложение A. Алгоритм SM-2 (справка)
+## Приложение A. Алгоритм FSRS-5 (справка)
 
-Реализация в [`src/core_srs.py`](../src/core_srs.py), класс `SRSScheduler`:
+Реализация в [`backend/app/domain/core_srs.py`](../backend/app/domain/core_srs.py), класс `SRSScheduler`:
 
 ```text
-EF' = EF + (0.1 − (5 − q) × (0.08 + (5 − q) × 0.02))
-EF' = max(1.3, EF')               # EF_MIN = 1.3, EF_DEFAULT = 2.5
+Параметры слова:
+  stability (S) — дней до 90% retention
+  difficulty (D) — внутренняя сложность (0–10)
+  state         — Learning | Review | Relearning
 
-если q < 3:   interval = 1, reps = 0          # сброс, слово возвращается в сессию
-иначе если reps == 0:  interval = 1, reps = 1
-иначе если reps == 1:  interval = 6, reps = 2
-иначе:        interval = round(prev_interval × EF'), reps += 1
+Оценка quality 0–5 маппируется в 4 рейтинга FSRS:
+  0–2 → Again  (забыто; шаг сбрасывается в Learning)
+  3   → Hard   (с трудом; меньший прирост интервала)
+  4   → Good   (нормально)
+  5   → Easy   (легко; увеличенный интервал)
 
-due_date = reviewed_on + interval (дней)
+Планировщик (fsrs.Scheduler) пересчитывает S и D после каждого повторения.
+Следующий показ: due = reviewed_at + f(S, rating)
 ```
 
 Ключевая особенность LinguaBeat: метод `get_context_card()` возвращает не только
@@ -538,7 +542,7 @@ due_date = reviewed_on + interval (дней)
 |------|-----------------|-----------|
 | `api/v1` | HTTP, валидация, сериализация, auth-зависимости | `services`, `schemas`, `core/security` |
 | `services` | Бизнес-логика, оркестрация | `domain/core_srs`, `models` |
-| `domain/core_srs` | Чистый SM-2, доменные сущности | stdlib (без внешних зависимостей) |
+| `domain/core_srs` | Чистый FSRS-5, доменные сущности | fsrs>=4.0.0 |
 | `models` | ORM-маппинг, доступ к БД | SQLAlchemy, `core/database` |
 | `core` | Конфиг, безопасность, подключения | env, Redis, PostgreSQL |
 
