@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% set active = "pricing" %}
+
+{% block title %}Тарифы LinguaBeat — бесплатно и 250 руб/мес | Изучение русского через музыку{% endblock %}
+{% block description %}LinguaBeat: бесплатный план с 10 треками или премиум за 250 руб/мес с полным доступом к 60+ трекам и алгоритму FSRS.{% endblock %}
+{% block canonical %}/pricing{% endblock %}
+{% block og_url %}/pricing{% endblock %}
+{% block og_title %}Тарифы LinguaBeat{% endblock %}
+{% block og_description %}Freemium: начни бесплатно, переходи на премиум за 250 руб/мес.{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "LinguaBeat",
+  "applicationCategory": "EducationalApplication",
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Бесплатно",
+      "price": "0",
+      "priceCurrency": "RUB"
+    },
+    {
+      "@type": "Offer",
+      "name": "Премиум",
+      "price": "250",
+      "priceCurrency": "RUB",
+      "billingIncrement": "P1M"
+    }
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+  <div class="container">
+    <h1>Тарифы</h1>
+    <p class="page-hero-sub">Начни бесплатно. Переходи, когда будешь готов.</p>
+  </div>
+</section>
+
+<section class="pricing-section">
+  <div class="container">
+    <div class="pricing-grid">
+
+      <!-- FREE -->
+      <div class="pricing-card">
+        <div class="pricing-plan">Бесплатно</div>
+        <div class="pricing-price">
+          <span class="price-amount">0</span>
+          <span class="price-currency">₽</span>
+          <span class="price-period">навсегда</span>
+        </div>
+        <p class="pricing-desc">Попробуй метод, не вкладывая ничего</p>
+        <ul class="pricing-features">
+          <li><span class="feat-check">✓</span> 10 треков в библиотеке</li>
+          <li><span class="feat-check">✓</span> Личный словарь до 200 слов</li>
+          <li><span class="feat-check">✓</span> Полный алгоритм FSRS</li>
+          <li><span class="feat-check">✓</span> Субтитры в реальном времени</li>
+          <li><span class="feat-check">✓</span> Пассивный режим</li>
+          <li><span class="feat-dash">—</span> Полная библиотека (60+ треков)</li>
+          <li><span class="feat-dash">—</span> Безлимитный словарь</li>
+          <li><span class="feat-dash">—</span> AI-подсказки (контекстные примеры)</li>
+          <li><span class="feat-dash">—</span> Экспорт в Anki</li>
+        </ul>
+        <a href="{{ app_url }}/register" class="btn btn-outline btn-full">Начать бесплатно</a>
+      </div>
+
+      <!-- PREMIUM -->
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Популярный</div>
+        <div class="pricing-plan">Премиум</div>
+        <div class="pricing-price">
+          <span class="price-amount">250</span>
+          <span class="price-currency">₽</span>
+          <span class="price-period">/ месяц</span>
+        </div>
+        <p class="pricing-desc">Полный доступ — меньше чашки кофе в месяц</p>
+        <ul class="pricing-features">
+          <li><span class="feat-check">✓</span> <strong>60+ треков</strong> в библиотеке</li>
+          <li><span class="feat-check">✓</span> <strong>Безлимитный</strong> личный словарь</li>
+          <li><span class="feat-check">✓</span> Полный алгоритм FSRS</li>
+          <li><span class="feat-check">✓</span> Субтитры в реальном времени</li>
+          <li><span class="feat-check">✓</span> Пассивный режим</li>
+          <li><span class="feat-check">✓</span> Полная библиотека (60+ треков)</li>
+          <li><span class="feat-check">✓</span> Безлимитный словарь</li>
+          <li><span class="feat-check">✓</span> AI-подсказки (контекстные примеры)</li>
+          <li><span class="feat-check">✓</span> Экспорт в Anki</li>
+        </ul>
+        <a href="{{ app_url }}/register" class="btn btn-primary btn-full">Начать 14 дней бесплатно</a>
+        <p class="trial-note">Пробный период — без списания</p>
+      </div>
+
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h2 class="faq-title">Часто задаваемые вопросы</h2>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h3>Нужна ли кредитная карта для бесплатного плана?</h3>
+          <p>Нет. Бесплатный план — это бесплатно без каких-либо условий.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Как оплатить в России?</h3>
+          <p>Мы принимаем ЮKassa и СБП — самые популярные способы оплаты в России.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Можно ли отменить в любой момент?</h3>
+          <p>Да. Отмена подписки — в один клик, без звонков и бюрократии.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Есть ли скидка для студентов?</h3>
+          <p>Да — для студентов российских вузов предусмотрена скидка 30%. Напишите нам студенческий email.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Как насчёт музыкальных прав?</h3>
+          <p>LinguaBeat работает только с российскими правообладателями через РАО. Никаких западных мейджоров — никакого санкционного риска.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Есть ли B2B для вузов?</h3>
+          <p>Мы планируем B2B-лицензии для кафедр РКИ в 2026 году. Напишите нам для ранней записи.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Первые 14 дней — бесплатно</h2>
+    <p>Попробуй премиум без риска. Если не понравится — отмени до конца пробного периода.</p>
+    <a href="{{ app_url }}/register" class="btn btn-primary btn-lg">Начать пробный период</a>
+  </div>
+</section>
+
+{% endblock %}

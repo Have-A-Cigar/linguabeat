@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+
+{% set active = "method" %}
+
+{% block title %}Как работает LinguaBeat — музыка и интервальное повторение для изучения русского{% endblock %}
+{% block description %}LinguaBeat использует алгоритм FSRS и музыкальный контекст для запоминания слов. На 25% меньше повторений при retention 90%. Научная основа метода.{% endblock %}
+{% block canonical %}/method{% endblock %}
+{% block og_url %}/method{% endblock %}
+{% block og_title %}Метод LinguaBeat — FSRS + музыкальный контекст{% endblock %}
+{% block og_description %}Слово, услышанное в музыке, запоминается иначе. Алгоритм FSRS показывает его снова ровно тогда, когда оно вот-вот забудется.{% endblock %}
+
+{% block content %}
+
+<section class="page-hero">
+  <div class="container">
+    <h1>Метод: почему музыка + FSRS работает</h1>
+    <p class="page-hero-sub">Научная основа LinguaBeat в трёх принципах</p>
+  </div>
+</section>
+
+<!-- PRINCIPLE 1: MUSIC CONTEXT -->
+<section class="method-section">
+  <div class="container">
+    <div class="method-block">
+      <div class="method-number">01</div>
+      <div class="method-text">
+        <h2>Музыкальный контекст — самый сильный якорь памяти</h2>
+        <p>
+          Слово, услышанное в конкретной строфе с конкретной мелодией, запоминается
+          иначе, чем слово в учебнике. Это <strong>принцип контекстного кодирования</strong>:
+          память хранит не только слово, но и эмоциональный и фонетический контекст.
+        </p>
+        <p>
+          В LinguaBeat карточка повторения показывает то же слово в той же строфе,
+          с тем же таймкодом. Ты вспоминаешь не просто перевод — а момент,
+          когда впервые услышал слово.
+        </p>
+        <div class="method-example">
+          <div class="example-label">Пример карточки повторения</div>
+          <div class="context-card">
+            <div class="context-track">♪ «Подмосковные вечера» — 1:24</div>
+            <div class="context-lyric">
+              Не слышны в саду даже <strong class="accent">шорохи</strong>,<br>
+              всё здесь замерло до утра
+            </div>
+            <div class="context-question">Что значит <strong>шорохи</strong>?</div>
+            <div class="context-answer">rustling sounds / шелест</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPLE 2: FSRS -->
+<section class="method-section alt">
+  <div class="container">
+    <div class="method-block reverse">
+      <div class="method-number">02</div>
+      <div class="method-text">
+        <h2>FSRS: повторяй реже, запоминай лучше</h2>
+        <p>
+          Большинство приложений используют устаревший SM-2 (1987 год).
+          LinguaBeat работает на <strong>FSRS-5</strong> — современном алгоритме,
+          обученном на 350 миллионах сессий Anki.
+        </p>
+        <div class="comparison-mini">
+          <div class="comp-mini-item">
+            <div class="comp-mini-label">SM-2 (старый)</div>
+            <div class="comp-mini-bar">
+              <div class="bar-fill" style="width: 100%"></div>
+            </div>
+            <div class="comp-mini-value">100 повторений</div>
+          </div>
+          <div class="comp-mini-item highlight">
+            <div class="comp-mini-label">FSRS (LinguaBeat)</div>
+            <div class="comp-mini-bar">
+              <div class="bar-fill accent" style="width: 75%"></div>
+            </div>
+            <div class="comp-mini-value">75 повторений <span class="badge-save">−25%</span></div>
+          </div>
+        </div>
+        <p>
+          FSRS отслеживает <em>стабильность</em> и <em>сложность</em> каждого слова.
+          Трудное слово увидишь чаще; лёгкое — реже. Интервал рассчитывается
+          индивидуально, чтобы ты тратил время только на то, что нужно повторить.
+        </p>
+        <div class="method-stats">
+          <div class="method-stat">
+            <span class="stat-big">90%</span>
+            <span>целевой retention</span>
+          </div>
+          <div class="method-stat">
+            <span class="stat-big">−25%</span>
+            <span>повторений vs SM-2</span>
+          </div>
+          <div class="method-stat">
+            <span class="stat-big">350M</span>
+            <span>сессий в обучающей выборке</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPLE 3: PASSIVE MODE -->
+<section class="method-section">
+  <div class="container">
+    <div class="method-block">
+      <div class="method-number">03</div>
+      <div class="method-text">
+        <h2>Пассивный режим: учись, даже когда не учишься</h2>
+        <p>
+          Включи трек фоном — и слова из твоего словаря автоматически подсветятся
+          в субтитрах. Ты слышишь их снова и снова в контексте, без усилий.
+        </p>
+        <p>
+          Пассивное прослушивание <strong>не заменяет</strong> активные повторения,
+          но создаёт дополнительные следы памяти. Особенно эффективно для фонетики
+          и интонации.
+        </p>
+        <div class="passive-modes">
+          <div class="passive-mode">
+            <div class="passive-icon">🎧</div>
+            <div class="passive-name">Пассивный</div>
+            <div class="passive-desc">Слушай фоном, слова подсвечиваются</div>
+          </div>
+          <div class="passive-mode active">
+            <div class="passive-icon">📖</div>
+            <div class="passive-name">Активный</div>
+            <div class="passive-desc">Тапай, добавляй, отвечай на карточки</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RETENTION CLAIM -->
+<section class="retention-section">
+  <div class="container">
+    <div class="retention-card">
+      <h2>Цель пилота: 7-day retention &gt;45%</h2>
+      <p>
+        Стандартные языковые приложения теряют 70% пользователей к 3-му месяцу.
+        Наша гипотеза: музыкальный контекст + FSRS дадут retention выше 45%
+        к 7-му дню — это вдвое выше среднего по рынку.
+      </p>
+      <div class="retention-bars">
+        <div class="ret-bar">
+          <div class="ret-label">Стандартные приложения</div>
+          <div class="ret-track"><div class="ret-fill low" style="width: 30%"></div></div>
+          <div class="ret-pct">&lt;30%</div>
+        </div>
+        <div class="ret-bar">
+          <div class="ret-label">LinguaBeat (цель)</div>
+          <div class="ret-track"><div class="ret-fill high" style="width: 45%"></div></div>
+          <div class="ret-pct">&gt;45%</div>
+        </div>
+      </div>
+      <p class="ret-note">Пилот: 100 пользователей, 8 недель.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Готов проверить на себе?</h2>
+    <p>Бесплатный план — без ограничений по времени, без кредитной карты.</p>
+    <a href="{{ app_url }}/register" class="btn btn-primary btn-lg">Начать бесплатно</a>
+  </div>
+</section>
+
+{% endblock %}

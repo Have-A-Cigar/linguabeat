@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+
+{% block title %}LinguaBeat — учи русский язык через музыку | РКИ онлайн{% endblock %}
+{% block description %}LinguaBeat — учи русский как иностранный через любимую музыку. Алгоритм FSRS: на 25% меньше повторений при том же запоминании. Для иностранных студентов в российских вузах.{% endblock %}
+{% block og_title %}LinguaBeat — учи русский язык через музыку{% endblock %}
+{% block og_description %}Платформа РКИ с 60+ лицензированными треками. Тапни слово → получи перевод → система повторений запомнит за тебя. Freemium, 250 руб/мес.{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">Для иностранных студентов в России</div>
+      <h1 class="hero-title">
+        Учи русский язык<br>
+        <span class="accent">через музыку</span>
+      </h1>
+      <p class="hero-subtitle">
+        Слушаешь трек — тапаешь незнакомое слово — система запоминает за тебя.
+        Алгоритм FSRS показывает слово в нужный момент, пока оно не закрепится навсегда.
+      </p>
+      <div class="hero-cta">
+        <a href="{{ app_url }}/register" class="btn btn-primary btn-lg">Начать бесплатно</a>
+        <a href="/method" class="btn btn-ghost btn-lg">Как это работает →</a>
+      </div>
+      <p class="hero-note">Бесплатный план. Без кредитной карты.</p>
+    </div>
+    <div class="hero-visual">
+      <div class="player-card">
+        <div class="player-track">
+          <div class="track-art">♪</div>
+          <div class="track-info">
+            <div class="track-title">Подмосковные вечера</div>
+            <div class="track-artist">Владимир Трошин</div>
+          </div>
+          <div class="track-level">A2</div>
+        </div>
+        <div class="player-lyric">
+          Не слышны в саду даже
+          <span class="word-tap" title="шорохи — rustling sounds">шорохи</span>,
+          всё здесь замерло до утра
+        </div>
+        <div class="player-controls">
+          <div class="progress-bar"><div class="progress-fill" style="width: 38%"></div></div>
+          <div class="time-stamps"><span>1:24</span><span>3:18</span></div>
+        </div>
+        <div class="word-popup">
+          <div class="word-popup-word">шорохи</div>
+          <div class="word-popup-trans">rustling sounds / шелест</div>
+          <button class="btn-add-word">+ В словарь</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number">60+</div>
+        <div class="stat-label">лицензированных треков</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">25%</div>
+        <div class="stat-label">меньше повторений с FSRS</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">90%</div>
+        <div class="stat-label">целевой retention</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">161</div>
+        <div class="stat-label">страна в РУДН</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section">
+  <div class="container">
+    <h2 class="section-title">Как это работает</h2>
+    <p class="section-subtitle">Три шага от трека до выученного слова</p>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-icon">🎵</div>
+        <h3>Слушай музыку</h3>
+        <p>Выбирай трек по уровню и жанру. Субтитры подсвечиваются в реальном времени — ты видишь каждое слово в момент, когда оно звучит.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-icon">👆</div>
+        <h3>Тапни незнакомое слово</h3>
+        <p>Мгновенный перевод + контекст строфы. Слово сохраняется в твой словарь вместе с таймкодом трека, где ты его услышал.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-icon">🧠</div>
+        <h3>Система повторяет за тебя</h3>
+        <p>Алгоритм FSRS показывает слово точно в нужный момент — когда оно вот-вот забудется. Карточка воспроизводит ту же строфу из трека.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENCE -->
+<section class="diff-section">
+  <div class="container">
+    <h2 class="section-title">Почему LinguaBeat, а не Anki или Lingualeo</h2>
+    <div class="comparison-table">
+      <div class="comp-header">
+        <div></div>
+        <div class="comp-col-lb">LinguaBeat</div>
+        <div class="comp-col-other">Anki</div>
+        <div class="comp-col-other">LyricsTraining</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-feature">Музыка как контент</div>
+        <div class="comp-val yes">✓</div>
+        <div class="comp-val no">✗</div>
+        <div class="comp-val yes">✓</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-feature">FSRS-алгоритм повторений</div>
+        <div class="comp-val yes">✓</div>
+        <div class="comp-val yes">✓</div>
+        <div class="comp-val no">✗</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-feature">Русский как целевой язык</div>
+        <div class="comp-val yes">✓</div>
+        <div class="comp-val partial">частично</div>
+        <div class="comp-val partial">частично</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-feature">Лицензии РФ (РАО)</div>
+        <div class="comp-val yes">✓</div>
+        <div class="comp-val no">—</div>
+        <div class="comp-val no">✗</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-feature">Пассивный режим</div>
+        <div class="comp-val yes">✓</div>
+        <div class="comp-val no">✗</div>
+        <div class="comp-val no">✗</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TARGET -->
+<section class="target-section">
+  <div class="container">
+    <h2 class="section-title">Для кого</h2>
+    <div class="target-grid">
+      <div class="target-card">
+        <div class="target-icon">🎓</div>
+        <h3>Иностранные студенты</h3>
+        <p>Учишься в РУДН, СПбГУ или другом российском вузе? LinguaBeat поможет выйти за рамки учебника — через песни, которые слышишь каждый день.</p>
+        <div class="target-stat">11 000 студентов РУДН из 161 страны</div>
+      </div>
+      <div class="target-card">
+        <div class="target-icon">📚</div>
+        <h3>Кафедры РКИ</h3>
+        <p>Дополни программу преподавания аутентичным музыкальным материалом. B2B-лицензия для кафедр и языковых центров.</p>
+        <div class="target-stat">Запрос на B2B — 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Попробуй прямо сейчас</h2>
+    <p>Бесплатный план включает 10 треков и полный доступ к алгоритму повторений. Без установки — работает в браузере.</p>
+    <a href="{{ app_url }}/register" class="btn btn-primary btn-lg">Начать бесплатно</a>
+    <a href="/pricing" class="btn btn-ghost btn-lg">Смотреть тарифы</a>
+  </div>
+</section>
+
+{% endblock %}

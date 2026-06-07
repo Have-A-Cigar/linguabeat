@@ -1,0 +1,63 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+.env
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Node / Frontend
+node_modules/
+dist/
+.DS_Store
+
+# Generated
+openapi.json
+frontend/src/api/generated/
+
+# Presentation / competition materials (не часть кода приложения)
+*.pptx
+*.pdf
+unpacked_v*/
+graphify-out/
+memory/
+speech_FINAL*.md
+prototype_mockup.png
+ss_*.png
+screenshot.mjs
+slide*.txt
+criteria_content.txt
+_pptx_dump.txt
+_recon*.txt
+_recon*.py
+_verify*.txt
+_verify*.py
+_filter.py
+v12_check.txt
+final_pres_content.txt
+1_pdf_content.txt
+build_v11.py
+generate_v12.py
+свежие источники.md
+Резюме заявителя.txt
+
+# Course project documents
+Курсовой проект/
+Изначальные данные о стартап-проекте/
+Проведенная работа над проектом до реструктуризации данных/
+About_konkurs/
+
+# AI agent / IDE settings (not part of app)
+.claude/
+.mcp.json
+CLAUDE.md
+AGENTS.md
+
+# Root-level Playwright (dev tool only)
+package.json
+package-lock.json
+
+# Old src/ (code lives in backend/app/domain/)
+src/

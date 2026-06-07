@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}LinguaBeat — учи русский через музыку{% endblock %}</title>
+  <meta name="description" content="{% block description %}LinguaBeat — платформа для изучения русского языка через музыку и интервальное повторение. Для иностранных студентов в России.{% endblock %}">
+  <meta name="keywords" content="{% block keywords %}учить русский язык, РКИ онлайн, русский для иностранцев, интервальное повторение, FSRS, изучение языка через музыку{% endblock %}">
+  <link rel="canonical" href="https://linguabeat.ru{% block canonical %}/{% endblock %}">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="LinguaBeat">
+  <meta property="og:title" content="{% block og_title %}LinguaBeat — учи русский через музыку{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}Платформа для изучения русского языка через музыку и интервальное повторение. Для иностранных студентов в России.{% endblock %}">
+  <meta property="og:url" content="https://linguabeat.ru{% block og_url %}/{% endblock %}">
+  <meta property="og:locale" content="ru_RU">
+
+  <!-- Structured Data -->
+  {% block structured_data %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "LinguaBeat",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Web",
+    "inLanguage": "ru",
+    "description": "Платформа для изучения русского языка как иностранного через музыку и алгоритм интервального повторения FSRS.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "RUB",
+      "description": "Бесплатный базовый доступ"
+    },
+    "url": "https://linguabeat.ru"
+  }
+  </script>
+  {% endblock %}
+
+  <link rel="stylesheet" href="/static/css/landing.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="logo">
+      <span class="logo-icon">♪</span>
+      <span class="logo-text">LinguaBeat</span>
+    </a>
+    <nav class="nav">
+      <a href="/method" class="nav-link {% if active == 'method' %}active{% endif %}">Метод</a>
+      <a href="/pricing" class="nav-link {% if active == 'pricing' %}active{% endif %}">Тарифы</a>
+      <a href="{{ app_url }}/register" class="btn btn-outline">Войти</a>
+      <a href="{{ app_url }}/register" class="btn btn-primary">Начать бесплатно</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  {% block content %}{% endblock %}
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="logo">
+          <span class="logo-icon">♪</span>
+          <span class="logo-text">LinguaBeat</span>
+        </a>
+        <p class="footer-tagline">Русский язык через музыку</p>
+      </div>
+      <div class="footer-nav">
+        <h4>Продукт</h4>
+        <a href="/method">Как это работает</a>
+        <a href="/pricing">Тарифы</a>
+      </div>
+      <div class="footer-nav">
+        <h4>Целевая аудитория</h4>
+        <a href="/">Иностранные студенты</a>
+        <a href="/">Кафедры РКИ</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 LinguaBeat. Все права защищены.</p>
+      <p class="footer-legal">
+        Права на музыку — через <a href="https://rao.ru" rel="nofollow" target="_blank">РАО</a>.
+        Российские правообладатели.
+      </p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
