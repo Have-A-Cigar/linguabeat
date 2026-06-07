@@ -47,7 +47,7 @@ linguabeat/
 │   │   ├── schemas/  # Pydantic v2 схемы
 │   │   ├── services/ # Бизнес-логика
 │   │   ├── core/     # Config, Security, Database
-│   │   └── domain/   # core_srs.py — чистый SM-2, stdlib only
+│   │   └── domain/   # core_srs.py — FSRS-5, stdlib only
 │   └── tests/
 ├── frontend/         # React 18 + TypeScript + Vite + TailwindCSS
 │   └── src/
@@ -73,7 +73,7 @@ linguabeat/
 | GET | `/api/v1/tracks` | Библиотека треков |
 | POST | `/api/v1/words` | Добавить слово из субтитра |
 | GET | `/api/v1/srs/due` | Карточки к повторению |
-| POST | `/api/v1/srs/review` | Оценить повторение (SM-2) |
+| POST | `/api/v1/srs/review` | Оценить повторение (FSRS-5) |
 | GET | `/api/v1/progress` | Прогресс пользователя |
 
 ---
